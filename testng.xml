@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sample Test Suite" parallel="false">
+    <test name="Login Test">
+        <parameter name="waitTimeOutInSeconds" value="10"></parameter>
+        <classes>
+            <class name = "TestWithParametrs"/>
+            <class name="LoginTest"/>
+            <class name="CreateTicket"/>
+            <class name="EditTicketTest"/>
+            <class name="ViewTicketTest"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="utils.TestNGListener"/>
+    </listeners>
+</suite>
