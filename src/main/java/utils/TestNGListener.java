@@ -34,5 +34,11 @@ public class TestNGListener implements ITestListener {
     private File captureScreenshot(){
         return ((TakesScreenshot) WebDriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
     }
+
+    @Override
+    public void onTestStart(ITestResult result) {
+        String browserName = result.getTestContext().getCurrentXmlTest().getParameter("browserName");
+        System.out.println("Browser name is " + browserName);
+    }
 }
 

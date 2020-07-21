@@ -1,9 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sample Test Suite" parallel="false">
-    <test name="Login Test">
-        <parameter name="waitTimeOutInSeconds" value="10"></parameter>
+
+    <parameter name="waitTimeOutInSeconds" value="10"></parameter>
+    <parameter name="browserName" value="Chrome"></parameter>
+
+    <test name="TestWithParametrs">
         <classes>
-            <class name = "TestWithParametrs"/>
+            <class name="TestWithParametrs">
+                <methods>
+                    <include name="testWithParametrInListener"/>
+                </methods>
+            </class>
             <class name="LoginTest"/>
             <class name="CreateTicket"/>
             <class name="EditTicketTest"/>

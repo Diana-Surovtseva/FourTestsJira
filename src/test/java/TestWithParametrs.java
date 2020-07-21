@@ -7,6 +7,9 @@ public class TestWithParametrs {
     @Test
     public static void testWithParametrAnnotation(String waitTimeOutInSeconds){
         System.out.println("TimeOut: "+ waitTimeOutInSeconds);
+    }
 
+    @Test
+    public static void testWithParametrInListener(){
     }
 }
