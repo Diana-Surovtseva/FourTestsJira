@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sample Test Suite" parallel="false">
 
-    <parameter name="waitTimeOutInSeconds" value="10"></parameter>
+<!--    <parameter name="waitTimeOutInSeconds" value="10"></parameter>-->
     <parameter name="browserName" value="Chrome"></parameter>
 
     <test name="TestWithParametrs">
