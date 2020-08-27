@@ -4,19 +4,14 @@ import org.openqa.selenium.*;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import utils.WebDriverFactory;
 
-import java.time.Duration;
 
 public class HomePage {
     private WebDriver driver = null;
-    public boolean notPresent;
     private By viewIssue = By.xpath("//*[@data-issue-key='WEBINAR-11962']");
 
     private By toolBar = By.xpath("//*[@class='ops-menus aui-toolbar2']");
@@ -53,7 +48,8 @@ public class HomePage {
                 wait.until(ExpectedConditions.elementToBeClickable(elementToBeClicked));
                 driver.findElement(elementToBeClicked).click();
             }
-        } }
+        }
+    }
 
     public WebElement issueIsPresent() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -70,15 +66,8 @@ public class HomePage {
         clickOnElementWithRetry(createIssueButton, createIssueTitle, 3, 3);
     }
 
-//    public void assertCreateWindowNotPresent() {
-//        try {
-//            driver.findElement(createIssueTitle);
-//        } catch (NoSuchElementException ex) {
-//            System.out.println("CreateIssueWindow isn't displayed");
-//        }
-//    }
-  public void CreateIssueWindowNotPresent(){
-        boolean notPresent = ExpectedConditions.not(ExpectedConditions.invisibilityOfElementLocated(createIssueTitle)).apply(WebDriverFactory.getDriver());
-      Assert.assertTrue(notPresent);
-  }
+    public boolean isCreateIssueWindowNotPresent() {
+        return ExpectedConditions.invisibilityOfElementLocated(createIssueTitle).apply(WebDriverFactory.getDriver());
+    }
+
 }

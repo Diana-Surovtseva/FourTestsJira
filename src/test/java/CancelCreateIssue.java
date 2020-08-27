@@ -1,4 +1,3 @@
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -7,6 +6,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.TicketPage;
 import utils.WebDriverFactory;
+
 import static org.testng.Assert.assertTrue;
 
 public class CancelCreateIssue {
@@ -29,7 +29,7 @@ public class CancelCreateIssue {
     }
 
     @Test
-    public void CanselCreateIssueTest() {
+    public void cancelCreateIssueTest() {
         homePage.isButtonCreateLinkPresent();
         homePage.clickCreateIssue();
 
@@ -37,8 +37,7 @@ public class CancelCreateIssue {
         createNewTicketWindow.enterSummary("Test summary");
         createNewTicketWindow.pressCancelButton();
         createNewTicketWindow.acceptPopUpWindow();
- //       homePage.assertCreateWindowNotPresent();
-        homePage.CreateIssueWindowNotPresent();
+        assertTrue(homePage.isCreateIssueWindowNotPresent());
     }
 
     @AfterMethod
