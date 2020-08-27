@@ -1,14 +1,12 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,19 +14,21 @@ import java.time.Duration;
 
 public class HomePage {
     private WebDriver driver = null;
-   private By viewIssue = By.xpath("//*[@data-issue-key='WEBINAR-11962']");
+    private By viewIssue = By.xpath("//*[@data-issue-key='WEBINAR-11962']");
 
     private By toolBar = By.xpath("//*[@class='ops-menus aui-toolbar2']");
     private By createIssueButton = By.id("create_link");
-    private By createIssueTitle = By.xpath("//h2[@title='Create Issue']");
+    private By createIssueTitle = By.xpath("//*[h2]//*[@title='Создание задачи']");
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void navigateTo(){
+    public void navigateTo() {
         driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
     }
-    public boolean userIconIsPresent(){
+
+    public boolean userIconIsPresent() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         return wait.until(presenceOfElementLocated(By.id("header-details-user-fullname"))).isDisplayed();
     }
@@ -52,17 +52,29 @@ public class HomePage {
             }
         }
     }
-    public WebElement issueIsPresent(){
+
+    public WebElement issueIsPresent() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(elementToBeClickable(By.xpath("//*[@data-issue-key='BAK-40']"))).isEnabled();
         return driver.findElement(By.xpath("//*[@data-issue-key='BAK-40']"));
     }
-    public boolean isButtonCreateLinkPresent(){
-        WebDriverWait wait = new WebDriverWait(driver,10);
+
+    public boolean isButtonCreateLinkPresent() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         return wait.until(elementToBeClickable(By.id("create_link"))).isDisplayed();
     }
-    public void clickCreateIssue(){
-        clickOnElementWithRetry(createIssueButton, createIssueTitle,3,3);
+
+    public void clickCreateIssue() {
+        clickOnElementWithRetry(createIssueButton, createIssueTitle, 3, 3);
+    }
+
+    public void assertCreateWindowNotPresent() {
+        try {
+            driver.findElement(createIssueTitle);
+            fail();
+        } catch (NoSuchElementException ex) {
+            System.out.println("CreateIssueWindow isn't displayed");
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -8,7 +8,7 @@ import pages.LoginPage;
 import pages.TicketPage;
 import utils.WebDriverFactory;
 
-import static org.testng.Assert.assertEquals;
+
 import static org.testng.Assert.assertTrue;
 
 public class ViewTicketTest {

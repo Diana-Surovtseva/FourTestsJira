@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class CreateNewTicketWindow {
@@ -86,6 +85,13 @@ public class CreateNewTicketWindow {
         String popUpText = wait.until(presenceOfElementLocated(auiFlagContainer)).getText();
         return popUpText;
     }
+    public void pressCancelButton(){
+        driver.findElement(By.xpath("//*[@class='buttons']//*[@class='cancel']")).click();
+    }
+    public void acceptPopUpWindow(){
+        driver.switchTo().alert().accept();
+    }
+
 }
 
 

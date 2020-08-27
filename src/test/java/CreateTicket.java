@@ -12,16 +12,11 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.TicketPage;
 import utils.WebDriverFactory;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class CreateTicket {
 
     WebDriver driver = null;
-    //WebDriverWait wait;
     HomePage homePage = null;
     LoginPage loginPage = null;
     TicketPage ticketPage = null;
