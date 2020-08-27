@@ -71,7 +71,6 @@ public class HomePage {
     public void assertCreateWindowNotPresent() {
         try {
             driver.findElement(createIssueTitle);
-            fail();
         } catch (NoSuchElementException ex) {
             System.out.println("CreateIssueWindow isn't displayed");
         }
