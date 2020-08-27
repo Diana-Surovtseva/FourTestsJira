@@ -38,7 +38,7 @@ public class CancelCreateIssue {
         createNewTicketWindow.pressCancelButton();
         createNewTicketWindow.acceptPopUpWindow();
  //       homePage.assertCreateWindowNotPresent();
-        Assert.assertTrue(homePage.CreateIssueWindowNotPresent());
+        homePage.CreateIssueWindowNotPresent();
     }
 
     @AfterMethod
