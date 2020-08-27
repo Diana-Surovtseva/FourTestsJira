@@ -9,6 +9,7 @@ import static org.testng.Assert.fail;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.WebDriverFactory;
 
 import java.time.Duration;
 
@@ -68,12 +69,14 @@ public class HomePage {
         clickOnElementWithRetry(createIssueButton, createIssueTitle, 3, 3);
     }
 
-    public void assertCreateWindowNotPresent() {
-        try {
-            driver.findElement(createIssueTitle);
-        } catch (NoSuchElementException ex) {
-            System.out.println("CreateIssueWindow isn't displayed");
-        }
-    }
-
+//    public void assertCreateWindowNotPresent() {
+//        try {
+//            driver.findElement(createIssueTitle);
+//        } catch (NoSuchElementException ex) {
+//            System.out.println("CreateIssueWindow isn't displayed");
+//        }
+//    }
+  public boolean CreateIssueWindowNotPresent(){
+        return ExpectedConditions.not(ExpectedConditions.invisibilityOfElementLocated(createIssueTitle)).apply(WebDriverFactory.getDriver());
+  }
 }
